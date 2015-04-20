@@ -14,8 +14,23 @@ module.exports = {
       password_digest: {
         type: DataTypes.STRING
       },
+      first_name: {
+        type: DataTypes.STRING
+      },
+      last_name: {
+        type: DataTypes.STRING
+      },
+      birth_date: {
+        type: DataTypes.DATE
+      },
       sun_sign: {
         type: DataTypes.STRING
+      },
+      email_address: {
+        type: DataTypes.STRING
+      },
+      email_reminder: {
+        type: DataTypes.TIME
       },
       createdAt: {
         allowNull: false,
