@@ -4,15 +4,71 @@
 	<meta charset="UTF-8">
 	<title> astro app </title>
 
-	<script src='bundle.js'></script>
-	<script src='js/app.js'></script>
+	<script src="bundle.js"></script>
+	<script src="js/app.js"></script>
 
-	<link rel="stylesheet" href="/css/style.css">
+	<!-- <link rel="stylesheet" href="/css/style.css"> -->
 </head>
 <body>
+
 	<h1> astro app </h1>
-	<h2> a daily horoscope forcast </h2>
+	<h2> a daily horoscope forcasting service </h2>
 	<h3> created by @mr-eaze </h3>
+
+<!-- VIEWS -->
+	<div id="user-login"        class="views"></div>
+	<div id="user-info"         class="views"></div>
+	<div id="user-edit"         class="views"></div>
+	<div id="horoscope-data"    class="views"></div>
+	<div id="horoscope-forcast" class="views"></div>
+
+<!-- USER LOGIN -->
+	<template id="user-login-template">
+	  <input  id="user-login-username" class="user-login" type="text"     placeholder="username">
+	  <input  id="user-login-password" class="user-login" type="password" placeholder="password">
+	  <button id="user-login-button"   class="user-login" > Log In </button>
+	</template>
+
+<!-- USER INFO -->
+	<template id="user-info-template">
+		<div    id="username"           class="user-info"> {{username}}   </div>
+		<div    id="first-name"         class="user-info"> {{first-name}} </div>
+		<div    id="last-name"          class="user-info"> {{last-name}}  </div>
+		<div    id="birth-date"         class="user-info"> {{birth-date}} </div>
+	  <button id="logout-user-button" class="user-info"> Logout         </button>
+	  <button id="edit-user-button"   class="user-info"> Edit User Info </button>
+	  <button id="delete-user-button" class="user-info"> Delete Profile </button>
+	</template>
+
+<!-- USER EDIT -->
+	<template id="user-edit-template">
+		<input  id="edit-username"       class="user-edit" type="text"     placeholder="{{current-user}}" data-userId={{id}}>
+	  <input  id="origional-password"  class="user-edit" type="password" placeholder="authenticate old password">
+	  <input  id="edit-password"       class="user-edit" type="password" placeholder="new password">
+	  <input  id="edit-birth-date"     class="user-edit" type="date"     placeholder="birth date">
+	  <input  id="edit-email-address"  class="user-edit" type="text"     placeholder="new email">
+	  <input  id="edit-email-reminder" class="user-edit" type="text"     placeholder="new time">
+	  <button id="edit-user-button"    class="user-edit"> Update </button>
+	</template>
+
+<!-- HOROSCOPE DATA -->
+	<template id="horoscope-data-template">
+		<div id="sun-sign"   class="horoscope-data"> {{sun-sign}}   </div>
+		<div id="date-start" class="horoscope-data"> {{date-start}} </div>
+		<div id="date-end"   class="horoscope-data"> {{date-end}}   </div>
+		<div id="alias"      class="horoscope-data"> {{alias}}      </div>
+		<div id="element"    class="horoscope-data"> {{element}}    </div>
+		<div id="quality"    class="horoscope-data"> {{quality}}    </div>
+	</template>
+
+<!-- HOROSCOPE FORCAST -->
+	<template id="horoscope-forcast-template">
+		<div id="todays-date"      class="horoscope-forcast"> {{todays-date}}      </div>
+		<div id="todays-forcast"   class="horoscope-forcast"> {{todays-forcast}}   </div>
+		<div id="daily-busines"    class="horoscope-forcast"> {{daily-business}}   </div>
+		<div id="daily-creativity" class="horoscope-forcast"> {{daily-creativity}} </div>
+		<div id="daily-love"       class="horoscope-forcast"> {{daily-love}}       </div>	
+	</template>
 
 </body>
 </html>
