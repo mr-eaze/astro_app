@@ -31,10 +31,24 @@
 
 <!-- USER INFO -->
 	<template id="user-info-template">
-		<div    id="username"           class="user-info"> {{username}}   </div>
-		<div    id="first-name"         class="user-info"> {{first-name}} </div>
-		<div    id="last-name"          class="user-info"> {{last-name}}  </div>
-		<div    id="birth-date"         class="user-info"> {{birth-date}} </div>
+		<div    id="username"   class="user-info"> {{username}}   </div>
+		<div    id="first-name" class="user-info"> {{first-name}} </div>
+		<div    id="last-name"  class="user-info"> {{last-name}}  </div>
+		<div    id="birth-date" class="user-info"> {{birth-date}} </div>
+		<select id="sun-sign"   class="sun-sign-selector">
+  		<option value="aries"       class="sun-sign-selector"> Aries       </option>
+  		<option value="taurus"      class="sun-sign-selector"> Taurus      </option>
+  		<option value="gemini"      class="sun-sign-selector"> Gemini      </option>
+  		<option value="cancer"      class="sun-sign-selector"> Cancer      </option>
+  		<option value="leo"         class="sun-sign-selector"> Leo         </option>
+  		<option value="virgo"       class="sun-sign-selector"> Virgo       </option>
+  		<option value="libra"       class="sun-sign-selector"> Libra       </option>
+  		<option value="scorpio"     class="sun-sign-selector"> Scorpio     </option>
+  		<option value="sagittarius" class="sun-sign-selector"> Sagittarius </option>
+  		<option value="capricorn"   class="sun-sign-selector"> Capricorn   </option>
+  		<option value="aquarius	"   class="sun-sign-selector"> Aquarius	   </option>
+  		<option value="pisces"      class="sun-sign-selector"> Pisces      </option>
+		</select>
 	  <button id="logout-user-button" class="user-info"> Logout         </button>
 	  <button id="edit-user-button"   class="user-info"> Edit User Info </button>
 	  <button id="delete-user-button" class="user-info"> Delete Profile </button>
@@ -42,13 +56,11 @@
 
 <!-- USER EDIT -->
 	<template id="user-edit-template">
-		<input  id="edit-username"       class="user-edit" type="text"     placeholder="{{current-user}}" data-userId={{id}}>
-	  <input  id="origional-password"  class="user-edit" type="password" placeholder="authenticate old password">
-	  <input  id="edit-password"       class="user-edit" type="password" placeholder="new password">
-	  <input  id="edit-birth-date"     class="user-edit" type="date"     placeholder="birth date">
-	  <input  id="edit-email-address"  class="user-edit" type="text"     placeholder="new email">
-	  <input  id="edit-email-reminder" class="user-edit" type="text"     placeholder="new time">
-	  <button id="edit-user-button"    class="user-edit"> Update </button>
+		<input  id="new-username"       class="user-edit" type="text"     placeholder="{{current-user}}" data-userId={{id}}>
+	  <input  id="new-password"       class="user-edit" type="password" placeholder="new password">
+	  <input  id="new-email-address"  class="user-edit" type="text"     placeholder="new email">
+	  <input  id="new-email-reminder" class="user-edit" type="text"     placeholder="new time">
+	  <button id="update-user-button" class="user-edit"> Update </button>
 	</template>
 
 <!-- HOROSCOPE DATA -->

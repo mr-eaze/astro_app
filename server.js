@@ -3,18 +3,17 @@ var application_root = __dirname,
     bodyParser       = require('body-parser'),
     path             = require('path'),
     logger           = require('morgan'),
-    // request          = require('request'),
+    request          = require('request'),
     models           = require('./models'),
     User             = models.users,
     bcrypt		     = require('bcrypt'),
     session		     = require('express-session'),
     userRouter       = require('./routers/user_router.js');
-    // kimono           = require('kimono-api').kimono;
 
 var app = express();
 require('dotenv').load();
 
-// KIMONO ENDPOINTS
+// API ENDPOINTS
 var horoscope_data_endpoint    = 'https://www.kimonolabs.com/api/8bkgvv0i?apikey=' + process.env.APIKEY;
 var horoscope_forcast_endpoint = 'https://www.kimonolabs.com/api/d4nub8ow?apikey=' + process.env.APIKEY;
 
@@ -25,33 +24,68 @@ app.use( bodyParser.json() );
 app.use( express.static( path.join( application_root, 'public' )));
 app.use( express.static( path.join( application_root, 'browser' )));
 
+// ROUTERS
 app.use('/users', userRouter);
+// app.use('/sessions', sessionRouter);
 
-// app.use(session({
-// 	secret: 'nothingIsSecret',
-// 	saveUnitialized: false,
-// 	resave: false
-// }));
+// CALLBACK
+var restrictAccess = function(req, res, next) {
+  var sessionID = parseInt(req.session.currentUser);
+  var reqID = parseInt(req.params.id);
+  sessionID === reqID ? next() : res.status(401).send({ err: 401, msg: 'YOU SHALL NOT PASS!'});
+};
 
+// LOGIN & LOGOUT
+app.use(session({
+    secret: 'Secret Sauce',
+    saveUninitialized: false,
+    resave: false
+}));
 
+app.post('/sessions', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
 
+  User
+    .findOne({
+      where: { username: req.body.username }
+    })
+    .then(function(user) {
+      if (user) {
+        bcrypt.compare(password, user.password_digest, function(err, result) {
+          if (result) {
+            req.session.currentUser = user.id;
+            console.log(req.session.currentUser);
+            res.send(user);
+          } else {
+            res.status(400);
+            res.send({
+              err: 400,
+              msg: 'Incorrect password'
+            });
+          }
+        });
+      } else {
+        res.status(400);
+        res.send({
+          err: 400,
+          msg: 'Username not found'
+        });
+      }
+    });
+});
 
-// USER ROUTES
+app.delete('/sessions', function(req, res) {
+  delete req.session.currentUser;
+  res.send({ msg: 'Successfully logged out' });
+});
 
+app.get('/current_user', function(req, res) {
+    if (req.session.currentUser) {
+        res.send(req.session.currentUser);
+    }
+});
 
-
-
-// Daily Horoscope Requests
-
-// post request to sessions
-
-// Get
-	
-	// Horoscope Data
-
-	// app.get('/users/:sun_sign')
-
-	// Daily Forcast
 
 // Export app as module
 module.exports = app;
