@@ -26,7 +26,6 @@ app.use( express.static( path.join( application_root, 'browser' )));
 
 // ROUTERS
 app.use('/users', userRouter);
-// app.use('/sessions', sessionRouter);
 
 // CALLBACK
 var restrictAccess = function(req, res, next) {
@@ -42,6 +41,7 @@ app.use(session({
     resave: false
 }));
 
+// CREATE Session
 app.post('/sessions', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
@@ -75,15 +75,19 @@ app.post('/sessions', function(req, res) {
     });
 });
 
+// END Session
 app.delete('/sessions', function(req, res) {
   delete req.session.currentUser;
   res.send({ msg: 'Successfully logged out' });
 });
 
+// Current User
 app.get('/current_user', function(req, res) {
-    if (req.session.currentUser) {
-        res.send(req.session.currentUser);
-    }
+  var userID = req.session.currentUser;
+  User.findOne(userID)
+    .then(function(user) {
+      res.send(user.sun_sign);
+    });
 });
 
 

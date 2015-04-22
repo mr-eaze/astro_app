@@ -7,80 +7,112 @@
 	<script src="bundle.js"></script>
 	<script src="js/app.js"></script>
 
-	<!-- <link rel="stylesheet" href="/css/style.css"> -->
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-	<h1> astro app </h1>
+	<h1> astro app                            </h1>
 	<h2> a daily horoscope forcasting service </h2>
-	<h3> created by @mr-eaze </h3>
+	<h3> created by @mr-eaze                  </h3>
 
 <!-- VIEWS -->
 	<div id="user-login"        class="views"></div>
+	<div id="create-user"       class="views"></div>
+	<div id="edit-user"         class="views"></div>
 	<div id="user-info"         class="views"></div>
-	<div id="user-edit"         class="views"></div>
 	<div id="horoscope-data"    class="views"></div>
 	<div id="horoscope-forcast" class="views"></div>
 
 <!-- USER LOGIN -->
 	<template id="user-login-template">
-	  <input  id="user-login-username" class="user-login" type="text"     placeholder="username">
-	  <input  id="user-login-password" class="user-login" type="password" placeholder="password">
-	  <button id="user-login-button"   class="user-login" > Log In </button>
+		<form id="user-login-form">
+	  	<input  id="login-username"  class="user-login" type="text"     placeholder="username">
+	  	<input  id="login-password"  class="user-login" type="password" placeholder="password">
+	  	<button id="login-button"    class="user-login"> Log In   </button>
+	  	<button id="new-user-button" class="user-login"> New User </button>
+	  </form>
+	</template>
+
+<!-- CREATE USER -->
+	<template id="create-user-template">
+		<form id="create-user-form">
+			<input  id="create-username"   class="create-user" type="text"     placeholder="username">
+		  <input  id="create-first-name" class="create-user" type="password" placeholder="password">
+		  <input  id="create-last-name"  class="create-user" type="text"     placeholder="first name">
+		  <input  id="create-password"   class="create-user" type="text"     placeholder="last name">
+			<input  id="create-birth-date" class="create-user" type="date"     placeholder="">
+			<select id="create-sun-sign"  class="sun-sign-selector">
+  		  <option value="Aries"       class="sun-sign-selector"> Aries       <a>(Mar 21 - Apr 19)</a> </option>
+  		  <option value="Taurus"      class="sun-sign-selector"> Taurus      <a>(Apr 20 - May 20)</a> </option>
+  		  <option value="Gemini"      class="sun-sign-selector"> Gemini      <a>(May 21 - Jun 21)</a> </option>
+  		  <option value="Cancer"      class="sun-sign-selector"> Cancer      <a>(Jun 22 - Jul 22)</a> </option>
+  		  <option value="Leo"         class="sun-sign-selector"> Leo         <a>(Jul 23 - Aug 22)</a> </option>
+  		  <option value="Virgo"       class="sun-sign-selector"> Virgo       <a>(Aug 23 - Sep 22)</a> </option>
+  		  <option value="Libra"       class="sun-sign-selector"> Libra       <a>(Sep 23 - Oct 23)</a> </option>
+  		  <option value="Scorpio"     class="sun-sign-selector"> Scorpio     <a>(Oct 24 - Nov 20)</a> </option>
+  		  <option value="Sagittarius" class="sun-sign-selector"> Sagittarius <a>(Nov 21 - Dec 22)</a> </option>
+  		  <option value="Capricorn"   class="sun-sign-selector"> Capricorn   <a>(Dec 23 - Jan 20)</a> </option>
+  		  <option value="Aquarius"    class="sun-sign-selector"> Aquarius	   <a>(Jan 21 - Feb 21)</a> </option>
+  		  <option value="Pisces"      class="sun-sign-selector"> Pisces      <a>(Feb 22 - Mar 20)</a> </option>
+			</select>
+		  <input  id="create-email-address"  class="create-user" type="email" placeholder="email address">
+		  <input  id="create-email-reminder" class="create-user" type="time"  placeholder="daily reminder">
+		  <button id="create-user-button"    class="create-user"> Create </button>
+		</form>
+	</template>
+
+<!-- EDIT USER -->
+	<template id="edit-user-template">
+		<form id="edit-user-form">
+			<input  id="edit-username"       class="edit-user" type="text"     placeholder="new username">
+	  	<input  id="edit-password"       class="edit-user" type="password" placeholder="new password">
+	  	<input  id="edit-email-address"  class="edit-user" type="email"    placeholder="new email">
+	  	<input  id="edit-email-reminder" class="edit-user" type="time"     placeholder="new time">
+	  	<button id="update-user-button"  class="edit-user"> Update </button>
+		</form>
 	</template>
 
 <!-- USER INFO -->
 	<template id="user-info-template">
-		<div    id="username"   class="user-info"> {{username}}   </div>
-		<div    id="first-name" class="user-info"> {{first-name}} </div>
-		<div    id="last-name"  class="user-info"> {{last-name}}  </div>
-		<div    id="birth-date" class="user-info"> {{birth-date}} </div>
-		<select id="sun-sign"   class="sun-sign-selector">
-  		<option value="aries"       class="sun-sign-selector"> Aries       </option>
-  		<option value="taurus"      class="sun-sign-selector"> Taurus      </option>
-  		<option value="gemini"      class="sun-sign-selector"> Gemini      </option>
-  		<option value="cancer"      class="sun-sign-selector"> Cancer      </option>
-  		<option value="leo"         class="sun-sign-selector"> Leo         </option>
-  		<option value="virgo"       class="sun-sign-selector"> Virgo       </option>
-  		<option value="libra"       class="sun-sign-selector"> Libra       </option>
-  		<option value="scorpio"     class="sun-sign-selector"> Scorpio     </option>
-  		<option value="sagittarius" class="sun-sign-selector"> Sagittarius </option>
-  		<option value="capricorn"   class="sun-sign-selector"> Capricorn   </option>
-  		<option value="aquarius	"   class="sun-sign-selector"> Aquarius	   </option>
-  		<option value="pisces"      class="sun-sign-selector"> Pisces      </option>
-		</select>
-	  <button id="logout-user-button" class="user-info"> Logout         </button>
-	  <button id="edit-user-button"   class="user-info"> Edit User Info </button>
+		<div data="username"   class="user-info"> {{username}}   </div>
+		<div data="first-name" class="user-info"> {{first-name}} </div>
+		<div data="last-name"  class="user-info"> {{last-name}}  </div>
+		<div data="birth-date" class="user-info"> {{birth-date}} </div>
+		<div data="sun-sign"   class="user-info"> {{sun-sign}}   </div>
+	  <button id="user-logout-button" class="user-info"> Logout         </button>
+	  <button id="edit-user-button"   class="user-info"> Edit Profile   </button>
 	  <button id="delete-user-button" class="user-info"> Delete Profile </button>
-	</template>
-
-<!-- USER EDIT -->
-	<template id="user-edit-template">
-		<input  id="new-username"       class="user-edit" type="text"     placeholder="{{current-user}}" data-userId={{id}}>
-	  <input  id="new-password"       class="user-edit" type="password" placeholder="new password">
-	  <input  id="new-email-address"  class="user-edit" type="text"     placeholder="new email">
-	  <input  id="new-email-reminder" class="user-edit" type="text"     placeholder="new time">
-	  <button id="update-user-button" class="user-edit"> Update </button>
 	</template>
 
 <!-- HOROSCOPE DATA -->
 	<template id="horoscope-data-template">
-		<div id="sun-sign"   class="horoscope-data"> {{sun-sign}}   </div>
-		<div id="date-start" class="horoscope-data"> {{date-start}} </div>
-		<div id="date-end"   class="horoscope-data"> {{date-end}}   </div>
-		<div id="alias"      class="horoscope-data"> {{alias}}      </div>
-		<div id="element"    class="horoscope-data"> {{element}}    </div>
-		<div id="quality"    class="horoscope-data"> {{quality}}    </div>
+		<div data="sun-sign"   class="horoscope-data"> {{sun-sign}}   </div>
+		<div data="date-start" class="horoscope-data"> {{date-start}} </div>
+		<div data="date-end"   class="horoscope-data"> {{date-end}}   </div>
+		<div data="alias"      class="horoscope-data"> {{alias}}      </div>
+		<div data="element"    class="horoscope-data"> {{element}}    </div>
+		<div data="quality"    class="horoscope-data"> {{quality}}    </div>
 	</template>
 
 <!-- HOROSCOPE FORCAST -->
 	<template id="horoscope-forcast-template">
-		<div id="todays-date"      class="horoscope-forcast"> {{todays-date}}      </div>
-		<div id="todays-forcast"   class="horoscope-forcast"> {{todays-forcast}}   </div>
-		<div id="daily-busines"    class="horoscope-forcast"> {{daily-business}}   </div>
-		<div id="daily-creativity" class="horoscope-forcast"> {{daily-creativity}} </div>
-		<div id="daily-love"       class="horoscope-forcast"> {{daily-love}}       </div>	
+		<div data="todays-date"      class="horoscope-forcast"> {{todays-date}}      </div>
+		<div data="todays-forcast"   class="horoscope-forcast"> {{todays-forcast}}   </div>
+		<div data="daily-busines"    class="horoscope-forcast"> {{daily-business}}   </div>
+		<div data="daily-creativity" class="horoscope-forcast"> {{daily-creativity}} </div>
+		<div data="daily-love"       class="horoscope-forcast"> {{daily-love}}       </div>	
 	</template>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
