@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-	<h1> astro app                            </h1>
-	<h2> a daily horoscope forcasting service </h2>
-	<h3> created by @mr-eaze                  </h3>
+	<header>
+		<h1> astro app                            </h1>
+		<h2> a daily horoscope forcasting service </h2>	
+	</header>
 
 <!-- VIEWS -->
 	<div id="user-login"        class="views"></div>
@@ -71,8 +71,8 @@
 		<div data="username"   class="user-info"> {{username}}   </div>
 		<div data="first-name" class="user-info"> {{first_name}} </div>
 		<div data="last-name"  class="user-info"> {{last_name}}  </div>
-		<div data="birth-date" class="user-info"> {{birth_date}} </div>
-		<div data="sun-sign"   class="user-info"> {{sun_sign}}   </div>
+		<!-- <div data="birth-date" class="user-info"> {{birth_date}} </div> -->
+		<!-- <div data="sun-sign"   class="user-info"> {{sun_sign}}   </div> -->
 	  <button id="user-logout-button" class="user-info button"> Logout         </button>
 	  <button id="edit-user-button"   class="user-info button"> Edit Profile   </button>
 	  <button id="delete-user-button" class="user-info button"> Delete Profile </button>
@@ -80,22 +80,25 @@
 
 <!-- HOROSCOPE DATA -->
 	<template id="horoscope-data-template">
-		<div data="sun-sign"   class="horoscope-data"> {{sun-sign}}   </div>
-		<div data="date-start" class="horoscope-data"> {{date-start}} </div>
-		<div data="date-end"   class="horoscope-data"> {{date-end}}   </div>
-		<div data="alias"      class="horoscope-data"> {{alias}}      </div>
-		<div data="element"    class="horoscope-data"> {{element}}    </div>
-		<div data="quality"    class="horoscope-data"> {{quality}}    </div>
+		<div class="horoscope-data-id"> Sun Sign: </div><div data="sun-sign" class="horoscope-data"> {{sun_sign.text}}             </div>
+		<div class="horoscope-data-id"> Alias:    </div><div data="alias"    class="horoscope-data"> "{{alias}}"       						 </div>
+		<div class="horoscope-data-id"> Born:     </div><div data="dates"    class="horoscope-data"> {{date_start}} - {{date_end}} </div>
+		<div class="horoscope-data-id"> Element:  </div><div data="element"  class="horoscope-data"> {{element}}       						 </div>
+		<div class="horoscope-data-id"> Quality:  </div><div data="quality"  class="horoscope-data"> {{quality}}       						 </div>
 	</template>
 
 <!-- HOROSCOPE FORCAST -->
 	<template id="horoscope-forcast-template">
-		<div data="todays-date"      class="horoscope-forcast"> {{todays-date}}      </div>
-		<div data="todays-forcast"   class="horoscope-forcast"> {{todays-forcast}}   </div>
-		<div data="daily-busines"    class="horoscope-forcast"> {{daily-business}}   </div>
-		<div data="daily-creativity" class="horoscope-forcast"> {{daily-creativity}} </div>
-		<div data="daily-love"       class="horoscope-forcast"> {{daily-love}}       </div>	
+		<div class="horoscope-forcast-id"> Today's Date:    </div><div data="todays-date"      class="horoscope-forcast"> {{todays_date}}      </div>
+		<div class="horoscope-forcast-id"> Today's Forcast: </div><div data="todays-forcast"   class="horoscope-forcast"> {{todays_forcast}}   </div>
+		<div class="horoscope-forcast-id"> Busines:         </div><div data="daily-busines"    class="horoscope-forcast"> {{daily_business}}   </div>
+		<div class="horoscope-forcast-id"> Creativity:      </div><div data="daily-creativity" class="horoscope-forcast"> {{daily_creativity}} </div>
+		<div class="horoscope-forcast-id"> Love:            </div><div data="daily-love"       class="horoscope-forcast"> {{daily_love}}       </div>	
 	</template>
+
+	<footer>
+		<h3> created by @mr-eaze </h3>
+	</footer>
 
 </body>
 </html>

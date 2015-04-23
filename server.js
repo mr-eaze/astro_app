@@ -23,7 +23,7 @@ app.use( express.static( path.join( application_root, 'browser' )));
 
 // ROUTERS
 app.use('/users', userRouter);
-// app.use('/horoscope', horoscopeRouter);
+app.use('/horoscope', horoscopeRouter);
 
 // CALLBACK
 var restrictAccess = function(req, res, next) {

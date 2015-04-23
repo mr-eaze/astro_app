@@ -1,3 +1,4 @@
+
 // GLOBAL Variables
 var userLoginTemplate;       
 var createUserTemplate;      
@@ -59,11 +60,11 @@ var loginUser = function() {
 			password : password
 		}
   })
-  .done( function() {
+  .done(function() {
   	getCurrentUserInfo();
   })
   .fail(function() {
-  		alert('fail!');
+  	alert('fail!');
   });
 };
 
@@ -75,31 +76,64 @@ var loginUser = function() {
 // GET Current User Info
 var getCurrentUserInfo = function() {
 	console.log('getting current user id');
-	$.get('/current_user', function( data ){
-		renderUserInfo(data);
-		renderHoroscopeData(data.sun_sign);
-		renderHoroscopeForcast(data.sun_sign);
-	});
+	$.get('/current_user')
+	.done(renderUserInfo)
+	.done(getHoroscopeData.bind(this))
+	.done(getHoroscopeForcast.bind(this));
 };
 
 // RENDER User Info
 var renderUserInfo = function(userInfo) {
-	console.log('render user info');
+	console.log('render current user info');
 	$('.views').empty();
 	$('#user-info').append( userInfoTemplate(userInfo) );
 };
 
+
+  ////////////////////
+ // HOROSCOPE DATA // 
+////////////////////
+
+// GET Horoscope Data (then RENDER)
+var getHoroscopeData = function(userInfo) {
+	$.ajax({
+		url: '/horoscope/data/' + userInfo.sun_sign,
+		method: 'GET'
+	}).done(function(horoscopeData) {
+		$('#horoscope-data').append( horoscopeDataTemplate(horoscopeData) );
+	}.bind(this))
+	.fail(function() {
+		alert('Fail!');
+	});
+};
+
 // RENDER Horoscope Data
-var renderHoroscopeData = function(sunSign) {
-	console.log('render horoscope data for: ' + sunSign);
+// var renderHoroscopeData = function(horoscopeData) {
+// 	$('#horoscope-data').append( horoscopeDataTemplate(horoscopeData) );
+// };
 
+
+  ////////////////////////
+ // HOROSCOPE FORECAST //
+//////////////////////// 
+
+// GET Horoscope Forcast (then RENDER)
+var getHoroscopeForcast = function(userInfo) {
+	$.ajax({
+		url: '/horoscope/forcast/' + userInfo.sun_sign,
+		method: 'GET'
+	}).done(function(horoscopeForcast) {
+		$('#horoscope-forcast').append( horoscopeForcastTemplate(horoscopeForcast) );
+	}.bind(this))
+	.fail(function() {
+  	alert('Fail!');
+  });
 };
 
-// RENDER Daily Horoscope Forcast
-var renderHoroscopeForcast = function(sunSign) {
-	console.log('render horoscope forcast for: ' + sunSign);
-
-};
+// RENDER Horoscope Forcast
+// var renderHoroscopeForcast = function(horoscopeForcast) {
+// 	$('#horoscope-forcast').append(horoscopeForcastTemplate(horoscopeForcast));
+// };
 
 
   //////////////
@@ -142,7 +176,7 @@ var createUser = function() {
   })
   .done(function() {
   	console.log('new user created');
-	  renderApp();
+	  renderLogin();
   })
   .fail(function() {
   	alert('Fail!');
