@@ -30,15 +30,6 @@ userRouter.get('/:id',  function(req, res) {
 		});
 });
 
-// GET / SHOW User by Id and Return User Sun Sign
-userRouter.get('/:id', function(req, res) {
-	User
-		.findOne({ where: {id: req.params.id} })
-		.then(function(user) {
-			res.send(user.sun_sign);
-		});
-});
-
 // POST / CREATE User
 userRouter.post('/', function(req, res) {
   bcrypt.hash(req.body.password_digest, 10, function(err, hash) {

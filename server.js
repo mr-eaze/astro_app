@@ -6,16 +6,13 @@ var application_root = __dirname,
     request          = require('request'),
     models           = require('./models'),
     User             = models.users,
-    bcrypt		     = require('bcrypt'),
-    session		     = require('express-session'),
-    userRouter       = require('./routers/user_router.js');
+    bcrypt		       = require('bcrypt'),
+    session		       = require('express-session'),
+    userRouter       = require('./routers/user_router.js'),
+    horoscopeRouter  = require('./routers/horoscope_router.js');
 
 var app = express();
 require('dotenv').load();
-
-// API ENDPOINTS
-var horoscope_data_endpoint    = 'https://www.kimonolabs.com/api/8bkgvv0i?apikey=' + process.env.APIKEY;
-var horoscope_forcast_endpoint = 'https://www.kimonolabs.com/api/d4nub8ow?apikey=' + process.env.APIKEY;
 
 // Server Configuration
 app.use( logger('dev') );
@@ -26,6 +23,7 @@ app.use( express.static( path.join( application_root, 'browser' )));
 
 // ROUTERS
 app.use('/users', userRouter);
+// app.use('/horoscope', horoscopeRouter);
 
 // CALLBACK
 var restrictAccess = function(req, res, next) {
@@ -35,11 +33,13 @@ var restrictAccess = function(req, res, next) {
 };
 
 // LOGIN & LOGOUT
-app.use(session({
+app.use(
+  session({
     secret: 'Secret Sauce',
     saveUninitialized: false,
     resave: false
-}));
+  })
+);
 
 // CREATE Session
 app.post('/sessions', function(req, res) {
@@ -48,11 +48,12 @@ app.post('/sessions', function(req, res) {
 
   User
     .findOne({
-      where: { username: req.body.username }
+      where: { username: username }
     })
     .then(function(user) {
       if (user) {
-        bcrypt.compare(password, user.password_digest, function(err, result) {
+        var passwordDigest = user.password_digest;
+        bcrypt.compare(password, passwordDigest, function(err, result) {
           if (result) {
             req.session.currentUser = user.id;
             console.log(req.session.currentUser);
@@ -81,12 +82,13 @@ app.delete('/sessions', function(req, res) {
   res.send({ msg: 'Successfully logged out' });
 });
 
-// Current User
+// GET Current User
 app.get('/current_user', function(req, res) {
   var userID = req.session.currentUser;
+  console.log("HERE")
   User.findOne(userID)
     .then(function(user) {
-      res.send(user.sun_sign);
+      res.send(user);
     });
 });
 

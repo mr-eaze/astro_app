@@ -25,63 +25,57 @@
 
 <!-- USER LOGIN -->
 	<template id="user-login-template">
-		<form id="user-login-form">
-	  	<input  id="login-username"  class="user-login" type="text"     placeholder="username">
-	  	<input  id="login-password"  class="user-login" type="password" placeholder="password">
-	  	<button id="login-button"    class="user-login"> Log In   </button>
-	  	<button id="new-user-button" class="user-login"> New User </button>
-	  </form>
+	  <input  id="login-username"  class="user-login" type="text"     placeholder="username">
+	  <input  id="login-password"  class="user-login" type="password" placeholder="password">
+	  <button id="user-login-button" class="user-login button"> Log In   </button>
+	  <button id="new-user-button"   class="user-login button"> New User </button>
 	</template>
 
 <!-- CREATE USER -->
 	<template id="create-user-template">
-		<form id="create-user-form">
-			<input  id="create-username"   class="create-user" type="text"     placeholder="username">
-		  <input  id="create-first-name" class="create-user" type="password" placeholder="password">
-		  <input  id="create-last-name"  class="create-user" type="text"     placeholder="first name">
-		  <input  id="create-password"   class="create-user" type="text"     placeholder="last name">
-			<input  id="create-birth-date" class="create-user" type="date"     placeholder="">
-			<select id="create-sun-sign"  class="sun-sign-selector">
-  		  <option value="Aries"       class="sun-sign-selector"> Aries       <a>(Mar 21 - Apr 19)</a> </option>
-  		  <option value="Taurus"      class="sun-sign-selector"> Taurus      <a>(Apr 20 - May 20)</a> </option>
-  		  <option value="Gemini"      class="sun-sign-selector"> Gemini      <a>(May 21 - Jun 21)</a> </option>
-  		  <option value="Cancer"      class="sun-sign-selector"> Cancer      <a>(Jun 22 - Jul 22)</a> </option>
-  		  <option value="Leo"         class="sun-sign-selector"> Leo         <a>(Jul 23 - Aug 22)</a> </option>
-  		  <option value="Virgo"       class="sun-sign-selector"> Virgo       <a>(Aug 23 - Sep 22)</a> </option>
-  		  <option value="Libra"       class="sun-sign-selector"> Libra       <a>(Sep 23 - Oct 23)</a> </option>
-  		  <option value="Scorpio"     class="sun-sign-selector"> Scorpio     <a>(Oct 24 - Nov 20)</a> </option>
-  		  <option value="Sagittarius" class="sun-sign-selector"> Sagittarius <a>(Nov 21 - Dec 22)</a> </option>
-  		  <option value="Capricorn"   class="sun-sign-selector"> Capricorn   <a>(Dec 23 - Jan 20)</a> </option>
-  		  <option value="Aquarius"    class="sun-sign-selector"> Aquarius	   <a>(Jan 21 - Feb 21)</a> </option>
-  		  <option value="Pisces"      class="sun-sign-selector"> Pisces      <a>(Feb 22 - Mar 20)</a> </option>
-			</select>
-		  <input  id="create-email-address"  class="create-user" type="email" placeholder="email address">
-		  <input  id="create-email-reminder" class="create-user" type="time"  placeholder="daily reminder">
-		  <button id="create-user-button"    class="create-user"> Create </button>
-		</form>
+		<input  id="create-username"   class="create-user" type="text"     placeholder="username">
+		<input  id="create-password"   class="create-user" type="password" placeholder="password">
+		<input  id="create-first-name" class="create-user" type="text"     placeholder="first name">
+		<input  id="create-last-name"  class="create-user" type="text"     placeholder="last name">
+		<input  id="create-birth-date" class="create-user" type="date"     value="date">
+		<select id="create-sun-sign"  class="sun-sign-selector">
+  	  <option value="Aries"       class="sun-sign-selector"> Aries       (Mar 21 - Apr 19) </option>
+  	  <option value="Taurus"      class="sun-sign-selector"> Taurus      (Apr 20 - May 20) </option>
+  	  <option value="Gemini"      class="sun-sign-selector"> Gemini      (May 21 - Jun 21) </option>
+  	  <option value="Cancer"      class="sun-sign-selector"> Cancer      (Jun 22 - Jul 22) </option>
+  	  <option value="Leo"         class="sun-sign-selector"> Leo         (Jul 23 - Aug 22) </option>
+  	  <option value="Virgo"       class="sun-sign-selector"> Virgo       (Aug 23 - Sep 22) </option>
+  	  <option value="Libra"       class="sun-sign-selector"> Libra       (Sep 23 - Oct 23) </option>
+  	  <option value="Scorpio"     class="sun-sign-selector"> Scorpio     (Oct 24 - Nov 20) </option>
+  	  <option value="Sagittarius" class="sun-sign-selector"> Sagittarius (Nov 21 - Dec 22) </option>
+  	  <option value="Capricorn"   class="sun-sign-selector"> Capricorn   (Dec 23 - Jan 20) </option>
+  	  <option value="Aquarius"    class="sun-sign-selector"> Aquarius	   (Jan 21 - Feb 21) </option>
+  	  <option value="Pisces"      class="sun-sign-selector"> Pisces      (Feb 22 - Mar 20) </option>
+		</select>
+		<input  id="create-email-address"  class="create-user" type="email" placeholder="email address">
+		<input  id="create-email-reminder" class="create-user" type="time"  placeholder="daily reminder">
+		<button id="create-user-button"    class="create-user button"> Create </button>
 	</template>
 
 <!-- EDIT USER -->
 	<template id="edit-user-template">
-		<form id="edit-user-form">
-			<input  id="edit-username"       class="edit-user" type="text"     placeholder="new username">
-	  	<input  id="edit-password"       class="edit-user" type="password" placeholder="new password">
-	  	<input  id="edit-email-address"  class="edit-user" type="email"    placeholder="new email">
-	  	<input  id="edit-email-reminder" class="edit-user" type="time"     placeholder="new time">
-	  	<button id="update-user-button"  class="edit-user"> Update </button>
-		</form>
+		<input  id="edit-username"       class="edit-user" type="text"     placeholder="new username">
+	  <input  id="edit-password"       class="edit-user" type="password" placeholder="new password">
+	  <input  id="edit-email-address"  class="edit-user" type="email"    placeholder="new email">
+	  <input  id="edit-email-reminder" class="edit-user" type="time"     placeholder="new time">
+	  <button id="update-user-button"  class="edit-user button"> Update </button>
 	</template>
 
 <!-- USER INFO -->
 	<template id="user-info-template">
 		<div data="username"   class="user-info"> {{username}}   </div>
-		<div data="first-name" class="user-info"> {{first-name}} </div>
-		<div data="last-name"  class="user-info"> {{last-name}}  </div>
-		<div data="birth-date" class="user-info"> {{birth-date}} </div>
-		<div data="sun-sign"   class="user-info"> {{sun-sign}}   </div>
-	  <button id="user-logout-button" class="user-info"> Logout         </button>
-	  <button id="edit-user-button"   class="user-info"> Edit Profile   </button>
-	  <button id="delete-user-button" class="user-info"> Delete Profile </button>
+		<div data="first-name" class="user-info"> {{first_name}} </div>
+		<div data="last-name"  class="user-info"> {{last_name}}  </div>
+		<div data="birth-date" class="user-info"> {{birth_date}} </div>
+		<div data="sun-sign"   class="user-info"> {{sun_sign}}   </div>
+	  <button id="user-logout-button" class="user-info button"> Logout         </button>
+	  <button id="edit-user-button"   class="user-info button"> Edit Profile   </button>
+	  <button id="delete-user-button" class="user-info button"> Delete Profile </button>
 	</template>
 
 <!-- HOROSCOPE DATA -->
@@ -105,14 +99,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
