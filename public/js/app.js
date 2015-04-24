@@ -27,16 +27,17 @@ $(function() {
 	$('body').on('click', '#update-user-button', updateUser );
   $('body').on('click', '#user-logout-button', logoutUser );
 	$('body').on('click', '#delete-user-button', deleteUser );
-
+	$('body').on('click', '#go-back-button'    , goBack     );
+	
 	// RENDER App
 	console.log('app rendered');
 	renderLogin();
 });
 
 
-  ////////////////
- // LOGIN USER // 
-////////////////
+  //////////////////////////////////
+ // LOGIN / LOGOUT / DELETE USER // 
+//////////////////////////////////
 
 // RENDER Login
 var renderLogin = function() {
@@ -59,19 +60,53 @@ var loginUser = function() {
     	username : username,
 			password : password
 		}
-  })
-  .done(function() {
-  	getCurrentUserInfo();
-  })
-  .fail(function() {
-  	alert('fail!');
+  }).done(function() {
+  		getCurrentUserInfo();
+  }).fail(function() {
+  		alert('fail!');
   });
 };
 
+// LOGOUT User / DELETE Session
+var logoutUser = function() {
 
-  ///////////////
- // USER INFO // 
-///////////////
+	$.ajax({
+  	url: '/sessions',
+    method: 'DELETE'
+  }).done(function() {
+  		renderLogin();
+  		console.log('user logged out');
+  }).fail(function() {
+  		alert('fail!');
+  });
+};
+
+// GET Current User Id
+var getCurrentUserId = function() {
+	$.get('/current_user').done( deleteUser.bind(this) );
+}
+
+// DELETE User
+var deleteUser = function(userId) {
+	console.log('delete user');
+
+	getCurrentUserId().done(
+		$.ajax({
+	  	url: '/users/' + userId.id,
+	    method: 'DELETE'
+	  }).done(function() {
+	  		renderLogin();
+	  		console.log('user deleted');
+	  }).fail(function() {
+	  		alert('fail!');
+	  })
+  );
+};
+
+
+  //////////////////
+ // USER PROFILE // 
+//////////////////
 
 // GET Current User Info
 var getCurrentUserInfo = function() {
@@ -190,7 +225,7 @@ var createUser = function() {
 
 // RENDER Edit User Info
 var editUser = function() {
-	console.log('login rendered');
+	console.log('edit rendered');
 	$('.views').empty();
 	$('#user-login').append(editUserTemplate);
 };
@@ -223,13 +258,10 @@ var updateUser = function() {
   });
 };
 
-
-var logoutUser = function() {
-	console.log('logout user');
-};
-
-var deleteUser = function() {
-	console.log('delete user');
+// GO BACK to User Profile
+var goBack = function() {
+	console.log('go back to profile');
+	getCurrentUserInfo();
 };
 
 
