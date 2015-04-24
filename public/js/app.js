@@ -26,7 +26,7 @@ $(function() {
   $('body').on('click', '#edit-user-button'  , editUser   );
 	$('body').on('click', '#update-user-button', updateUser );
   $('body').on('click', '#user-logout-button', logoutUser );
-	$('body').on('click', '#delete-user-button', deleteUser );
+	// $('body').on('click', '#delete-user-button', deleteUser );
 	$('body').on('click', '#go-back-button'    , goBack     );
 	
 	// RENDER App
@@ -43,7 +43,7 @@ $(function() {
 var renderLogin = function() {
 	console.log('login rendered');
 	$('.views').empty();
-	$('#edit-user').append(userLoginTemplate);
+	$('#user-login').append(userLoginTemplate);
 };
 
 // LOGIN User / CREATE New Session
@@ -82,26 +82,26 @@ var logoutUser = function() {
 };
 
 // GET Current User Id
-var getCurrentUserId = function() {
-	$.get('/current_user').done( deleteUser.bind(this) );
-}
+// var getCurrentUserId = function() {
+// 	$.get('/current_user').done( deleteUser.bind(this) );
+// }
 
 // DELETE User
-var deleteUser = function(userId) {
-	console.log('delete user');
+// var deleteUser = function(userId) {
+// 	console.log('delete user');
 
-	getCurrentUserId().done(
-		$.ajax({
-	  	url: '/users/' + userId.id,
-	    method: 'DELETE'
-	  }).done(function() {
-	  		renderLogin();
-	  		console.log('user deleted');
-	  }).fail(function() {
-	  		alert('fail!');
-	  })
-  );
-};
+// 	getCurrentUserId().done(
+// 		$.ajax({
+// 	  	url: '/users/' + userId.id,
+// 	    method: 'DELETE'
+// 	  }).done(function() {
+// 	  		renderLogin();
+// 	  		console.log('user deleted');
+// 	  }).fail(function() {
+// 	  		alert('fail!');
+// 	  })
+//   );
+// };
 
 
   //////////////////

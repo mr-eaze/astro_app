@@ -1,0 +1,190 @@
+* {
+	box-sizing     : border-box;
+	font-family    : 'Orbitron', sans-serif;
+	letter-spacing : 1px;
+}
+
+body {
+	width   : 100%;
+	margin  : 0;
+	display : inline-block;
+}
+
+
+/*---------------------------------*/
+/* HEADER */
+/*---------------------------------*/
+
+header {
+	/*position: fixed;*/
+  width            : 100%;
+  background-color : black;
+  padding          : 10px 0 10px 50px;
+  margin-bottom    : 50px;
+}
+
+#astro-app-logo-white {
+	width                   : 60%;
+	margin                  : auto;
+	text-align              : center;
+	-webkit-animation-delay : 1s;
+}
+
+#about-message {
+	color                   : white;
+	font-weight             : 400;
+	font-size               : 1.2em;
+	letter-spacing          : 2px;
+  margin                  : 10px 0 10px 0;
+	-webkit-animation-delay : 1s;
+}
+
+
+/*---------------------------------*/
+/* VIEWS */
+/*---------------------------------*/
+
+#views-container {
+	width                   : 100%;
+	overflow                : scroll;
+	-webkit-animation-delay : 3s;
+}
+
+.views {
+	width  : 50%;
+	margin : auto; 
+}
+
+
+/*---------------------------------*/
+/* INPUTS */
+/*---------------------------------*/
+
+input {
+	width      : 100%;
+	height     : 50px;
+	margin     : 10px auto;
+	text-align : center;
+	font-size  : 1em;
+}
+
+
+/*---------------------------------*/
+/* BUTTONS */
+/*---------------------------------*/
+
+#user-info-button {
+	width: 30%;
+}
+
+button {
+	width            : 49%;
+	height           : 50px;
+	display          : inline-block;			
+	padding          : 10px;
+	margin           : 10px auto;
+	font-size        : 1em;
+	font-weight      : 400;
+	text-align       : center; 
+	border-radius    : 2px; 
+	border-bottom    : 2px solid lightgrey;
+	border-right     : 0px;
+	border-left	     : 0px;
+	border-top	     : 0px;
+	background-color : whitesmoke;
+	color            : darkgrey;
+}
+
+button:hover {
+	border-top       : 2px solid lightgrey;
+	border-left      : 2px solid lightgrey;
+	border-right     : 2px solid lightgrey;
+	border-bottom    : 1px solid lightgrey;
+}
+
+#user-login-button {
+	float: left; 
+}
+
+#new-user-button {
+	float: right;
+}
+
+#create-user-button{
+	width  : 60%;
+	margin : 10px 20%;
+}
+
+#user-button-container {
+	margin-bottom: 30px;
+}
+
+#user-logout-button {
+	float  : left;
+	width  : 31%;
+	margin : 1%;
+}
+
+#edit-user-button {
+	text-align : center;
+	width      : 32%;
+	margin     : 1%;
+}
+
+#delete-user-button {
+	float  : right;
+	width  : 31%;
+	margin : 1%;
+}
+
+#update-user-button {
+	float: left; 
+}
+
+#go-back-button {
+	float: right;
+}
+
+
+/*---------------------------------*/
+/* TEXT */
+/*---------------------------------*/
+
+.rendered-text-id {
+	font-weight   : 900;
+	width         : 35%;
+	float         : left;
+	margin-bottom : 25px;
+	padding-left  : 10px;
+	padding-right : 10px;
+}
+
+.rendered-text-data {
+	font-weight   : 500;
+	width         : 65%;
+	float         : left;
+	margin-bottom : 25px;
+}
+
+
+/*---------------------------------
+/* FOOTER */
+/*---------------------------------*/
+
+footer {
+	position                : fixed;
+	width                   : 100%;
+	height                  : 10%;
+  bottom                  : 0;
+	height                  : 50px;
+	background-color        : black;
+	color                   : white;
+	-webkit-animation-delay : 1.5s;
+}
+
+#footer-text {
+	margin-right   : 50px;
+	letter-spacing : 2px;
+	font-weight    : 400;
+	float          : right;
+}

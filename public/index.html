@@ -6,29 +6,36 @@
 
 	<script src="bundle.js"></script>
 	<script src="js/app.js"></script>
-
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/animate.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>		
+	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<header>
-		<h1> astro app                            </h1>
-		<h2> a daily horoscope forcasting service </h2>	
+	<header class="animated fadeInDownBig"> 
+		<img id="astro-app-logo-white" src="/assets/astro_app_logos-03.png" alt="" class="animated fadeInLeftBig">
+		<h2  id="about-message" class="animated fadeInRightBig"> your daily horoscope forcasting service </h2>	
 	</header>
 
 <!-- VIEWS -->
-	<div id="user-login"        class="views"></div>
-	<div id="create-user"       class="views"></div>
-	<div id="edit-user"         class="views"></div>
-	<div id="user-info"         class="views"></div>
-	<div id="horoscope-data"    class="views"></div>
-	<div id="horoscope-forcast" class="views"></div>
+	<div id="views-container" class="animated fadeIn">
+		<div id="user-login"        class="views"></div>
+		<div id="create-user"       class="views"></div>
+		<div id="edit-user"         class="views"></div>
+		<div id="user-info"         class="views"></div>
+		<div id="horoscope-data"    class="views"></div>
+		<div id="horoscope-forcast" class="views"></div>
+	</div>
 
 <!-- USER LOGIN -->
 	<template id="user-login-template">
-	  <input  id="login-username"  class="user-login" type="text"     placeholder="username">
-	  <input  id="login-password"  class="user-login" type="password" placeholder="password">
-	  <button id="user-login-button" class="user-login button"> Log In   </button>
-	  <button id="new-user-button"   class="user-login button"> New User </button>
+		<div id="login-container">
+	  	<input  id="login-username"  class="user-login" type="text"     placeholder="username">
+	  	<input  id="login-password"  class="user-login" type="password" placeholder="password">
+	  	<button id="user-login-button" class="user-login button"> Log In   </button>
+	  	<button id="new-user-button"   class="user-login button"> New User </button>
+		</div>
 	</template>
 
 <!-- CREATE USER -->
@@ -54,7 +61,9 @@
 		</select>
 		<input  id="create-email-address"  class="create-user" type="email" placeholder="email address">
 		<input  id="create-email-reminder" class="create-user" type="time"  placeholder="daily reminder">
-		<button id="create-user-button"    class="create-user button"> Create </button>
+		<div>
+			<button id="create-user-button"    class="create-user button"> Create </button>
+		</div>
 	</template>
 
 <!-- EDIT USER -->
@@ -70,35 +79,37 @@
 
 <!-- USER INFO -->
 	<template id="user-info-template">
-		<div data="username"   class="user-info"> {{username}}   </div>
-		<div data="first-name" class="user-info"> {{first_name}} </div>
-		<div data="last-name"  class="user-info"> {{last_name}}  </div>
+		<div id="user-button-container">
+	  	<button id="user-logout-button" class="user-info-button button"> Logout         </button>
+	  	<button id="edit-user-button"   class="user-info-button button"> Edit Profile   </button>
+	  	<button id="delete-user-button" class="user-info-button button"> Delete Profile </button>
+	  </div>
+		<!-- <div class="user-info-id rendered-text-id"> Username:    </div><div data="username"   class="user-info rendered-text-data"> {{username}}   </div> -->
+		<!-- <div class="user-info-id rendered-text-id"> First Name:  </div><div data="first-name" class="user-info rendered-text-data"> {{first_name}} </div> -->
+		<!-- <div class="user-info-id rendered-text-id"> Last Name:   </div><div data="last-name"  class="user-info rendered-text-data"> {{last_name}}  </div> -->
 		<!-- <div data="birth-date" class="user-info"> {{birth_date}} </div> -->
-	  <button id="user-logout-button" class="user-info button"> Logout         </button>
-	  <button id="edit-user-button"   class="user-info button"> Edit Profile   </button>
-	  <button id="delete-user-button" class="user-info button"> Delete Profile </button>
 	</template>
 
 <!-- HOROSCOPE DATA -->
 	<template id="horoscope-data-template">
-		<div class="horoscope-data-id"> Sun Sign: </div><div data="sun-sign" class="horoscope-data"> {{sun_sign.text}}             </div>
-		<div class="horoscope-data-id"> Alias:    </div><div data="alias"    class="horoscope-data"> "{{alias}}"       						 </div>
-		<div class="horoscope-data-id"> Born:     </div><div data="dates"    class="horoscope-data"> {{date_start}} - {{date_end}} </div>
-		<div class="horoscope-data-id"> Element:  </div><div data="element"  class="horoscope-data"> {{element}}       						 </div>
-		<div class="horoscope-data-id"> Quality:  </div><div data="quality"  class="horoscope-data"> {{quality}}       						 </div>
+		<span class="horoscope-data-id rendered-text-id"> Sun Sign: </span><span data="sun-sign" class="horoscope-data rendered-text-data"> {{sun_sign.text}}             </span>
+		<span class="horoscope-data-id rendered-text-id"> Alias:    </span><span data="alias"    class="horoscope-data rendered-text-data"> "{{alias}}"       						</span>
+		<span class="horoscope-data-id rendered-text-id"> Born:     </span><span data="dates"    class="horoscope-data rendered-text-data"> {{date_start}} - {{date_end}} </span>
+		<span class="horoscope-data-id rendered-text-id"> Element:  </span><span data="element"  class="horoscope-data rendered-text-data"> {{element}}       						</span>
+		<span class="horoscope-data-id rendered-text-id"> Quality:  </span><span data="quality"  class="horoscope-data rendered-text-data"> {{quality}}       						</span>
 	</template>
 
 <!-- HOROSCOPE FORCAST -->
 	<template id="horoscope-forcast-template">
-		<div class="horoscope-forcast-id"> Today's Date:    </div><div data="todays-date"      class="horoscope-forcast"> {{todays_date}}      </div>
-		<div class="horoscope-forcast-id"> Today's Forcast: </div><div data="todays-forcast"   class="horoscope-forcast"> {{todays_forcast}}   </div>
-		<div class="horoscope-forcast-id"> Busines:         </div><div data="daily-busines"    class="horoscope-forcast"> {{daily_business}}   </div>
-		<div class="horoscope-forcast-id"> Creativity:      </div><div data="daily-creativity" class="horoscope-forcast"> {{daily_creativity}} </div>
-		<div class="horoscope-forcast-id"> Love:            </div><div data="daily-love"       class="horoscope-forcast"> {{daily_love}}       </div>	
+		<span class="horoscope-forcast-id rendered-text-id"> Today's Date:    </span><span data="todays-date"      class="horoscope-forcast rendered-text-data"> {{todays_date}}      </span>
+		<span class="horoscope-forcast-id rendered-text-id"> Today's Forcast: </span><span data="todays-forcast"   class="horoscope-forcast rendered-text-data"> {{todays_forcast}}   </span>
+		<span class="horoscope-forcast-id rendered-text-id"> Business:        </span><span data="daily-busines"    class="horoscope-forcast rendered-text-data"> {{daily_business}}   </span>
+		<span class="horoscope-forcast-id rendered-text-id"> Creativity:      </span><span data="daily-creativity" class="horoscope-forcast rendered-text-data"> {{daily_creativity}} </span>
+		<span class="horoscope-forcast-id rendered-text-id"> Love:            </span><span data="daily-love"       class="horoscope-forcast rendered-text-data"> {{daily_love}}       </span>	
 	</template>
 
-	<footer>
-		<h3> created by @mr-eaze </h3>
+	<footer class="animated fadeInUpBig">
+		<h3 id="footer-text"> created by mr. eaze </h3>
 	</footer>
 
 </body>
