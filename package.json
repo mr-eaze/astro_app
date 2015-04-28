@@ -19,9 +19,23 @@
     "pg-native": "^1.8.0",
     "request": "^2.55.0",
     "sequelize": "^2.0.3",
+    "sequelize-cli": "^1.7.0",
     "underscore": "^1.8.2"
   },
   "scripts": {
     "start": "./bin/www"
-  }
+  },
+  "description": "An app to fill all of your daily astologic needs.",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mr-eaze/astro_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-eaze/astro_app/issues"
+  },
+  "homepage": "https://github.com/mr-eaze/astro_app"
 }
