@@ -26,7 +26,7 @@ $(function() {
   $('body').on('click', '#edit-user-button'  , editUser   );
 	$('body').on('click', '#update-user-button', updateUser );
   $('body').on('click', '#user-logout-button', logoutUser );
-	// $('body').on('click', '#delete-user-button', deleteUser );
+	$('body').on('click', '#delete-user-button', deleteUser );
 	$('body').on('click', '#go-back-button'    , goBack     );
 	
 	// RENDER App
@@ -86,9 +86,9 @@ var logoutUser = function() {
 // 	$.get('/current_user').done( deleteUser.bind(this) );
 // }
 
-// DELETE User
-// var deleteUser = function(userId) {
-// 	console.log('delete user');
+DELETE User
+var deleteUser = function() {
+	console.log('delete user test');
 
 // 	getCurrentUserId().done(
 // 		$.ajax({
@@ -177,7 +177,7 @@ var getHoroscopeForcast = function(userInfo) {
 
 // RENDER New User
 var newUser = function() {
-	console.log('delete user');
+	console.log('new user rendered');
 	$('.views').empty();
 	$('#create-user').append(createUserTemplate);
 };
@@ -225,7 +225,7 @@ var createUser = function() {
 
 // RENDER Edit User Info
 var editUser = function() {
-	console.log('edit rendered');
+	console.log('edit user rendered');
 	$('.views').empty();
 	$('#user-login').append(editUserTemplate);
 };
