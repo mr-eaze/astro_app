@@ -86,7 +86,7 @@ var logoutUser = function() {
 // 	$.get('/current_user').done( deleteUser.bind(this) );
 // }
 
-DELETE User
+// DELETE User
 var deleteUser = function() {
 	console.log('delete user test');
 
