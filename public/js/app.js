@@ -89,6 +89,7 @@ var logoutUser = function() {
 // DELETE User
 var deleteUser = function() {
 	console.log('delete user test');
+};
 
 // 	getCurrentUserId().done(
 // 		$.ajax({
