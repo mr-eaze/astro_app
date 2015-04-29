@@ -180,6 +180,7 @@ footer {
 	height                     : 50px;
 	background-color           : black;
 	color                      : white;
+	padding-top                : 10px; 
 	-webkit-animation-delay    : 2s;
 	-webkit-animation-duration : 2s;
 }
@@ -191,4 +192,8 @@ footer {
 	letter-spacing  : 2px;
 	font-weight     : 400;
 	float           : right;
+}
+
+a:visited{
+  color : white;
 }
